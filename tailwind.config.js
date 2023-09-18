@@ -17,6 +17,11 @@ module.exports = {
     },
     extend: {
       colors: {
+        custom_primary:"#90bde0",
+        custom_secondary: "#0c1e2c",
+        custom_bg: "#060e14",
+        custom_text: "#dfecf6",
+        custom_accent: "#3c8bc8",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -11,44 +11,47 @@ export default function Auth() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const { mutate: login, isLoading, isError } = useLogin(setLoggedIn);
 
-
   async function onSubmit(data: any) {
     login({ email: data.email, password: data.password });
     reset();
   }
 
   return (
-    <>
-      <h1 className="text-white text-4xl">planzy</h1>
-      {isLoading && (
-        <section className="bg-slate-400 mx-4 p-2">
-          <h1>Loading.....</h1>
+    <div className="flex items-center justify-center gap-20">
+      <div>
+        <img src="/planzy_logo.png" alt="planzy Logo" className="max-h-40" />
+      </div>
+      <div>
+        <h1 className="text-white text-4xl text-center">planzy</h1>
+        {isError && <p className="text-red-500">Invalid Request</p>}
+        <section className="mt-4">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex flex-col gap-4">
+              <input
+                className="p-1 text-custom_bg rounded-md"
+                type="text"
+                placeholder="email"
+                {...register("email")}
+              />
+              <input
+                className="p-1 text-custom_bg rounded-md"
+                type="password"
+                placeholder="password"
+                {...register("password")}
+              />
+            </div>
+            <div className="flex items-center justify-center w-full mt-4">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="py-2 px-8 rounded-md bg-[#d07583] text-white disabled:bg-slate-700"
+              >
+                {isLoading ? "Loading..." : "Login"}
+              </button>
+            </div>
+          </form>
         </section>
-      )}
-
-      {isError && <p className="text-red-500">Invalid Request</p>}
-
-      <section className="mt-4">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-4">
-            <input type="text" placeholder="email" {...register("email")} />
-            <input
-              type="password"
-              placeholder="password"
-              {...register("password")}
-            />
-          </div>
-          <div className="flex items-center justify-center w-full mt-4">
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="p-2 bg-slate-500 text-white"
-            >
-              {isLoading ? "Loading..." : "Login"}
-            </button>
-          </div>
-        </form>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }

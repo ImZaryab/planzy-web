@@ -12,7 +12,7 @@ export default function useLogout(LoggedInStateSetter: any) {
       .then((res) => {
         if (res) {
           LoggedInStateSetter(true);
-          Cookies.set("loggedIn");
+          Cookies.set("loggedIn", "true");
           router.push("/menu");
         }
       });

@@ -84,101 +84,105 @@ export default function CreatePlanForm() {
   }
 
   return (
+    // <>
+    //   {isVerified ? (
+    //     <></>
+    //   ) : (
+    //     <>
+    //       <div className="flex flex-col justify-center items-center gap-2">
+    //         <span className="block">please verify your email to create plans</span>
+    //         <button onClick={requestVerification} className="rounded-md px-3 py-1 bg-slate-500 text-white">verify</button>
+    //       </div>
+    //     </>
+    //   )}
+    // </>
+
     <>
-      {isVerified ? (
-        <>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="hiking" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="location"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Location</FormLabel>
-                    <FormControl>
-                      <Input placeholder="buildspace hq, sf" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="participants"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>participants</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="add participants by thier email, seperate multiple entries with comma."
-                        className="resize-none w-[20rem]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="pollData.pollItem"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>poll-item</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="game, day, time, track etc"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="pollData.pollOptions"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>poll-options</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="add poll options, seperate multiple entries with comma."
-                        className="resize-none w-[20rem]"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="">
-                create
-              </Button>
-            </form>
-          </Form>
-        </>
-      ) : (
-        <>
-          <div className="flex flex-col justify-center items-center gap-2">
-            <span className="block">please verify your email to create plans</span>
-            <button onClick={requestVerification} className="rounded-md px-3 py-1 bg-slate-500 text-white">verify</button>
-          </div>
-        </>
-      )}
+      <>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 text-black">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="hiking" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="location"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Location</FormLabel>
+                  <FormControl>
+                    <Input placeholder="buildspace hq, sf" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="participants"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>participants</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="add participants by thier email, seperate multiple entries with comma."
+                      className="resize-none w-[20rem]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="pollData.pollItem"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>poll-item</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="game, day, time, track etc"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="pollData.pollOptions"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>poll-options</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="add poll options, seperate multiple entries with comma."
+                      className="resize-none w-[20rem]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" className="">
+              create
+            </Button>
+          </form>
+        </Form>
+      </>
     </>
   );
 }

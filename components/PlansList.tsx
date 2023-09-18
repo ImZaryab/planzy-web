@@ -2,7 +2,7 @@
 
 import pb from "@/lib/pocketbase";
 import { useQuery } from "@tanstack/react-query";
-import useVerified, { requestVerification } from "@/hooks/useVerified";
+import useVerified from "@/hooks/useVerified";
 
 const user = pb.authStore.model?.email;
 
@@ -14,7 +14,7 @@ export default function PlansList() {
     let userPlans: Record<any, any>[] = [];
     const plans = await pb.collection("plans").getFullList();
     plans.map((plan) => {
-      if (plan.participants.includes(userID) || plan.createdBy == user) {
+      if (plan.participantIDs.includes(userID) || plan.createdBy == user) {
         userPlans.push(plan);
       }
     });
@@ -45,9 +45,10 @@ export default function PlansList() {
           {Plans && Plans.length ? 
             Plans.map((item, index) => {
               return (
-                <div key={index} className="h-56 w-56 bg-yellow-500 flex items-center justify-center rounded-lg">
+                <a href={`/plans/${item.id}`} key={index} className="h-56 w-56 bg-yellow-500 flex items-center justify-center rounded-lg relative">
+                  {item.status == "Completed" ? <p className="absolute top-2 right-2">✔️</p>:<p className="absolute top-2 right-2">⏳</p>}
                   <span className="text-black">{item.planName}</span>
-                </div>
+                </a>
               );
             }) : <p>Looks like you don't have any plans :(</p>}
         </div>

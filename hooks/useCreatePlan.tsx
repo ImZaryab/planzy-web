@@ -42,8 +42,10 @@ export default function useCreatePlan() {
       planName: data.name,
       location: data.location,
       createdBy: currentUser,
-      participants: participantIDs,
+      participantIDs: participantIDs,
+      participants: JSON.stringify(userEmails),
       pollData: JSON.stringify(allPollData),
+      status: ["In-progress"]
     });
   }
   return useMutation({ mutationFn: createPlan });
