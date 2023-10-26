@@ -23,14 +23,16 @@ export default function Auth() {
       </div>
       <div>
         <h1 className="text-white text-4xl text-center">planzy</h1>
-        {isError && <p className="text-red-500">Invalid Request</p>}
+        {isError && <p className="text-red-500 text-center">Invalid Request</p>}
+        <p className="mt-2 opacity-50">Test Username: testuser1</p>
+        <p className="opacity-50">Test Password: test12345</p>
         <section className="mt-4">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-4">
               <input
                 className="p-1 text-custom_bg rounded-md"
                 type="text"
-                placeholder="email"
+                placeholder="username/email"
                 {...register("email")}
               />
               <input
